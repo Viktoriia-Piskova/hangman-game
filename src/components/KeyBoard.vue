@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="wrapper">
+        <WordToGuess />
         <button v-for="letter in letters" :key="letter.value" @click="selectLetter(letter)" :class="{isDisabled: letter.disabled}" :disabled="letter.disabled">
             {{ letter.value }}
         </button>
@@ -7,19 +8,21 @@
 </template>
 
 <script>
+import WordToGuess from './WordToGuess.vue'
+
 export default {
+    components: {
+        WordToGuess
+    },
     data() {
         return {
             letters: []
         }
     },
-    computed: {
-         
-    },
     methods: {
         selectLetter(letter) {
             letter.disabled = true
-            console.log(letter)
+            this.$emit('isChosenLetter', letter.value)
         }
     },
     created() {
@@ -33,5 +36,10 @@ export default {
 <style scoped>
 .isDisabled {
     background-color: red;
+}
+
+.wrapper {
+    margin: 1rem;
+    padding: 1rem;
 }
 </style>

@@ -11,6 +11,8 @@
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+div img {
+    width: 200px;
+}
 </style>
