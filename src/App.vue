@@ -1,15 +1,14 @@
 <script setup>
-import KeyBoard from '../src/components/KeyBoard.vue'
-import HangmanPicture from '../src/components/HangmanPicture.vue'
+import PlayBoard from './components/PlayBoard.vue'
+import GameState from './components/GameState.vue'
 
 
 </script>
 
 <template>
   <div>
-    <HangmanPicture />
-    <WordToGuess />
-    <KeyBoard @isChosenLetter="checkLetter(letter)" />
+    <PlayBoard />
+    <GameState />
   </div>
 
 </template>
