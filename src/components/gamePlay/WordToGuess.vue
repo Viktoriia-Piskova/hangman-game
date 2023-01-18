@@ -1,17 +1,17 @@
 <template>
-    <div class="wrapper">
-        <span v-for="answer in answers" :key="answer" class="answer">{{ answer }}</span>
+    <div class="wrapper" v-if="answers">
+        <span v-for="answer in answers.value" :key="answer" class="answer">{{ answer }}</span>
     </div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from 'vue';
+import { ref } from 'vue';
 import { useWordStore } from '../../stores/WordStore.js'
+import { storeToRefs } from 'pinia';
 
 const store = useWordStore();
 
-let answers = store.answers;
-let word = store.word;
+let {answers} = storeToRefs(store);
 
 
 </script>
