@@ -10,26 +10,9 @@ import { useWordStore } from '../../stores/WordStore.js'
 
 const store = useWordStore();
 
-    const answers = ref(store.answers)
+let answers = store.answers;
+let word = store.word;
 
-
-        // data() {
-        //     return {
-        //         word: 'helloworld',
-        //         answers: [],
-        //         remainingLetters: 0,
-        //     }
-        // },
-        // computed: {
-        //     wordLength() {
-        //         return this.word.length
-        //     },
-
-        // },
-        // onBeforeMount( () => {
-        //     this.answers = Array.from(this.word).map((el) => el = '_')
-        //     this.remainingLetters = this.word.length})
-        
 
 </script>
 

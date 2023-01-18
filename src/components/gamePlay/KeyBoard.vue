@@ -9,13 +9,15 @@
 
 <script setup>
 import { ref, onBeforeMount } from "vue"
+import { useWordStore } from '../../stores/WordStore.js'
 
+const store = useWordStore();
 const letters = ref([]);
 
 
 function selectLetter(letter) {
     letter.disabled = true
-    this.$emit('isChosenLetter', letter.value)
+    store.checkLetter(letter)
 }
 
 onBeforeMount(() => {
