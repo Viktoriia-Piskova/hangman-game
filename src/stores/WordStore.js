@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia'
+import words from '../assets/words.json'
 
 export const useWordStore = defineStore('WordStore', {
     state: () => ({
-        word: 'hello', 
+        word: '', 
+        hint: '',
         answers: [],
         remainingLetters: 0,
+
         }),
     getters: {
         wordLength() {
@@ -14,10 +17,19 @@ export const useWordStore = defineStore('WordStore', {
     },
     actions: {
         startGame() {
+            let i = Math.floor(Math.random() * words.length)
+            this.word = words[i].word.toLowerCase()
+            this.hint = words[i].hint
+
             this.answers = Array.from(this.word).map((el) => {return el = "_"});
             this.remainingLetters = this.word.length
         },
+        resetGame() {
+
+            
+        },
         checkLetter(letter) {
+            letter.disabled = true
             let guess = letter.value.toLowerCase()
             for (let i = 0; i <= this.word.length; i++) {
                 if (this.word[i] == guess) {
@@ -26,7 +38,6 @@ export const useWordStore = defineStore('WordStore', {
                 }
             }
         },
-
     }
     
 } )

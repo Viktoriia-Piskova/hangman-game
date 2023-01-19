@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" v-if="answers">
-        <span v-for="answer in answers.value" :key="answer" class="answer">{{ answer }}</span>
+        <span v-for=" answer, index , in answers" :key="index" class="answer">{{ answer }}</span>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import { storeToRefs } from 'pinia';
 
 const store = useWordStore();
 
-let {answers} = storeToRefs(store);
+const {answers} = storeToRefs(store);
 
 
 </script>

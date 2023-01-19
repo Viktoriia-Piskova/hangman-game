@@ -16,7 +16,7 @@ const letters = ref([]);
 
 
 function selectLetter(letter) {
-    letter.disabled = true
+    // letter.disabled = true
     store.checkLetter(letter)
 }
 
