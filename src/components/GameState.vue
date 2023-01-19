@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="start">Start game</button>
-        <h1>{{ remainingLett }}</h1>
+        <TimerDisplay />
     </div>
 </template>
 
@@ -10,6 +10,7 @@
 import {ref} from 'vue'
 import { useWordStore } from '../stores/WordStore.js'
 import { storeToRefs } from 'pinia';
+import TimerDisplay from './gamePlay/TimerDisplay.vue'
 
 const store = useWordStore();
 const remainingLett = storeToRefs(store).remainingLetters
