@@ -16,7 +16,6 @@ const letters = ref([]);
 
 
 function selectLetter(letter) {
-    // letter.disabled = true
     store.checkLetter(letter)
 }
 
@@ -31,7 +30,7 @@ onBeforeMount(() => {
 
 <style scoped>
 .isDisabled {
-    background-color: red;
+    background-color: rgb(132, 66, 66);
 }
 
 .wrapper {
