@@ -65,7 +65,7 @@ let {attempts} = storeToRefs(store)
     background-color:aqua;
     height: 310px;
     width: 100%;
-    z-index: 9999;
+    z-index: 1;
     left: -100%;
 }
 
