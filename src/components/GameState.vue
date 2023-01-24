@@ -1,6 +1,12 @@
 <template>
     <div class="wrapper">
-        <StartGame v-if="showMain">Start now!</StartGame>
+        
+        <div v-if="showMain">
+            <h3>😂🤓😨</h3>
+           <h2>Welcome to hangman game!</h2> 
+           <StartGame v-if="showMain">Start now!</StartGame>
+           <h3>😭😲😎</h3>
+        </div>
         <WonGame v-if="gameState.winGame" />
         <LostGame v-if="gameState.lostGame" />
     </div>
@@ -36,6 +42,15 @@ const showMain = ref(!gameState.value.lostGame && !gameState.value.isPaused && !
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
 }
 
+h2 {
+    color: #fff;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 6rem;
+}
 </style>
