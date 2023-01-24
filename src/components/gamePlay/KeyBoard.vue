@@ -45,11 +45,14 @@ function selectLetter(letter) {
     height: 4rem;
     width: 4rem;
     font-weight: 1000;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.keyboard-wrapper button .isDisabled {
-    background-color: rgb(132, 66, 66);
+.keyboard-wrapper .isDisabled {
+    background-color: rgb(80, 79, 79);
     cursor: not-allowed;
+    color: #fff;
 }
 </style>
