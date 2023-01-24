@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="keyboard-wrapper">
         <button v-for="letter in letters" :key="letter.value" @click="selectLetter(letter)"
             :class="{ isDisabled: letter.disabled }" :disabled="letter.disabled">
             {{ letter.value }}
@@ -20,17 +20,6 @@ function selectLetter(letter) {
     store.checkLetter(letter)
 }
 
-// onBeforeMount(() => {
-//     const charts = Array.from(Array(26).keys()).map((e) => e + 65);
-//     const alphabet = charts.map((el) => { return { value: String.fromCharCode(el), disabled: false } })
-//     letters.value = [...alphabet]
-// })
-// onBeforeUpdate(() => {
-//     const charts = Array.from(Array(26).keys()).map((e) => e + 65);
-//     const alphabet = charts.map((el) => { return { value: String.fromCharCode(el), disabled: true } })
-//     letters.value = [...alphabet]
-// })
-
 
 </script>
 
@@ -39,8 +28,28 @@ function selectLetter(letter) {
     background-color: rgb(132, 66, 66);
 }
 
-.wrapper {
+.keyboard-wrapper {
     margin: 1rem;
     padding: 1rem;
+}
+
+.keyboard-wrapper button {
+    color: #1a1a1a;
+    background-color: #00ff3e;
+    outline: 3px solid #ffed00;
+    margin: 0.5rem;
+    padding: 1rem;
+    font-size: 2rem;
+    border: 5px solid #000000;
+    border-radius: 50px;
+    height: 4rem;
+    width: 4rem;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.keyboard-wrapper button .isDisabled {
+    background-color: rgb(132, 66, 66);
+    cursor: not-allowed;
 }
 </style>

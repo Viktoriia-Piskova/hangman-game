@@ -8,13 +8,13 @@
             </div>
         </div>
 
-        <h3><span v-if="minutes > 0">{{ minutes }}</span>
-             <span v-if="minutes == 0">00</span> 
-             : 
-             <span v-if="seconds > 0">{{ seconds }}</span>
-             <span v-if="seconds == 0">00</span>
-        </h3>
-        <button @click="stopTimer">Pause</button>
+        <div class="timer-wrapper">
+            <h3><span v-if="minutes > 0">{{ minutes }}</span>
+                <span v-if="minutes == 0">00</span>:<span v-if="seconds > 0">{{ seconds }}</span>
+                <span v-if="seconds == 0">00</span>
+            </h3>
+            <button @click="stopTimer">Pause</button>
+        </div>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ import { storeToRefs } from 'pinia';
 const store = useWordStore()
 let seconds = ref(0)
 let minutes = ref(0)
-let {totalSeconds} = storeToRefs(store)
+let { totalSeconds } = storeToRefs(store)
 let onPause = ref(false)
 let timerId = ''
 
@@ -54,7 +54,6 @@ onBeforeMount(startTimer)
 </script>
 
 <style scoped>
-
 .wrapper {
     height: 100vh;
     width: 100vw;
@@ -69,6 +68,27 @@ onBeforeMount(startTimer)
 
 h2 {
     font-size: 15vw;
+    color: rgb(255, 255, 0);
 }
 
+.timer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+    color: #d90c0c;
+    font-weight: 1000;
+}
+
+button {
+    background-color: #ffe400;
+    border: 5px solid black;
+    font-size: larger;
+    font-weight: 900;
+    margin: 0.5rem;
+}
 </style>
