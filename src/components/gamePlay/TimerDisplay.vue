@@ -14,16 +14,19 @@
              <span v-if="seconds > 0">{{ seconds }}</span>
              <span v-if="seconds == 0">00</span>
         </h3>
-        <button @click="stopTimer"> stop</button>
+        <button @click="stopTimer">Pause</button>
     </div>
 </template>
 
 <script setup>
 import { onBeforeMount, ref } from 'vue'
+import { useWordStore } from '../../stores/WordStore.js';
+import { storeToRefs } from 'pinia';
 
+const store = useWordStore()
 let seconds = ref(0)
 let minutes = ref(0)
-let totalSeconds = 0
+let {totalSeconds} = storeToRefs(store)
 let onPause = ref(false)
 let timerId = ''
 
@@ -32,19 +35,21 @@ let timerId = ''
 function startTimer() {
     onPause.value = false
     timerId = setInterval(() => {
-        totalSeconds++;
-        seconds.value = totalSeconds % 60 < 10 ? `0${totalSeconds % 60}` : totalSeconds % 60;
-        minutes.value = Math.floor(totalSeconds / 60) < 10 ? `0${Math.floor(totalSeconds / 60)}` : Math.floor(totalSeconds / 60);
+        totalSeconds.value++;
+        seconds.value = totalSeconds.value % 60 < 10 ? `0${totalSeconds.value % 60}` : totalSeconds.value % 60;
+        minutes.value = Math.floor(totalSeconds.value / 60) < 10 ? `0${Math.floor(totalSeconds.value / 60)}` : Math.floor(totalSeconds.value / 60);
     }, 1000)
 }
 
 function stopTimer() {
     clearInterval(timerId)
     onPause.value = true
-    console.log(onPause)
 }
 
+
 onBeforeMount(startTimer)
+
+
 
 </script>
 

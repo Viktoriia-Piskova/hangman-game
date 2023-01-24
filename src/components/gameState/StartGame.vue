@@ -9,7 +9,6 @@
 <script setup>
 import {ref} from 'vue'
 import { useWordStore } from '../../stores/WordStore.js'
-//import { storeToRefs } from 'pinia';
 
 const store = useWordStore();
 
@@ -21,7 +20,11 @@ function start() {
 </script>
 
 <style  scoped>
-
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .start-btn {
     background-color: #0dad0d;

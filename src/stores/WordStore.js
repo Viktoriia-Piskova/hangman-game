@@ -8,6 +8,8 @@ export const useWordStore = defineStore('WordStore', {
         answers: [],
         attempts: 10,
         remainingLetters: 0,
+        letters: [],
+        totalSeconds: 0,
         gameState: {
             isActive: false,
             isPaused: false,
@@ -31,6 +33,8 @@ export const useWordStore = defineStore('WordStore', {
             this.gameState.winGame = false;
             this.gameState.lostGame = false;
             this.attempts = 10
+            this.letters = this.createBoard()
+            this.totalSeconds = 0
 
             this.answers = Array.from(this.word).map((el) => {return el = "_"});
             this.remainingLetters = this.word.length
@@ -48,11 +52,6 @@ export const useWordStore = defineStore('WordStore', {
             this.stopGame();
             this.startGame();
         },
-
-        // pauseGame() {
-        //     this.gameState.isPaused = !this.gameState.isPaused
-        //     this.gameState.isActive = !this.gameState.isActive
-        // },
 
         checkLetter(letter) {
             letter.disabled = true
@@ -76,6 +75,11 @@ export const useWordStore = defineStore('WordStore', {
                 this.gameState.isActive = false
                 this.gameState.lostGame = true
             }
+        },
+        createBoard() {
+            const charts = Array.from(Array(26).keys()).map((e) => e + 65);
+            const alphabet = charts.map((el) => { return { value: String.fromCharCode(el), disabled: false } })
+            return [...alphabet]
         }
     }
     
